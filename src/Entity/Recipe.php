@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 use App\Repository\RecipeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Attribute\Context;
@@ -24,6 +26,22 @@ class Recipe
 
     #[ORM\Column(length: 255)]
     private ?string $imagePreviewPath = null;
+
+
+    #[ORM\OneToMany(targetEntity: Step::class, mappedBy: 'recipe')]
+    private Collection $steps;
+
+    public function __construct()
+    {
+        $this->steps = new ArrayCollection();
+    }
+
+
+    public function getSteps(): Collection
+    {
+        return $this->steps;
+    }
+
 
     public function getId(): ?int
     {
