@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello RecipeController!{% endblock %}
+
+{% block body %}
+    {{ form(form) }}
+    <a href={{ path('app_me_recipe')}}>Recipe List</a>
+{% endblock %}

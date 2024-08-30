@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Category List{% endblock %}
+
+{% block body %}
+    <h1> Category List</h1>
+    <a href={{path('app_admin_category_create')}}>New Category</a>
+    <div>
+    <ul>
+        {% for category in categories %}
+        <li>
+            <div>
+                <h2>{{ category.name}}</h2>
+                {{ form(deleteForms[category.id], {'action': path('app_admin_category_delete'), 'method': 'DELETE'}) }}
+                <a href={{ path('app_admin_category_update', {id: category.id})}}>Update</a>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    </div>
+{% endblock %}

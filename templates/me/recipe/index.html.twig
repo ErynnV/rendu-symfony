@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recipe List!{% endblock %}
+
+{% block body %}
+    <h1> Recipe List</h1>
+    <a href={{path('app_me_recipe_create')}}>New Recipe</a>
+    <div>
+    <ul>
+        {% for recipe in recipes %}
+        <li>
+            <div>
+                <h2>{{ recipe.title}}</h2>
+                {{ form(deleteForms[recipe.id], {'action': path('app_me_recipe_delete'), 'method': 'DELETE'}) }}
+                <a href={{ path('app_me_recipe_update', {id: recipe.id})}}>Update</a>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    </div>
+{% endblock %}

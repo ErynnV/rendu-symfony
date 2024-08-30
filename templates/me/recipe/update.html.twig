@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello RecipeController!{% endblock %}
+
+{% block body %}
+    {{ form(form) }}
+    <ul>
+        {% for ingredient in recipe.ingredients %}
+        <li>
+            <div>
+                <h2>{{ ingredient.name}}</h2>
+                {{ form(ingredientDeleteForms[ingredient.id], {'action': path('app_me_recipe_ingredient_delete', {id: recipe.id}), 'method': 'POST'}) }}
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    {{ form(ingredientCreationForm, {'action': path('app_me_recipe_ingredient_create', {id: recipe.id})}) }}
+    {{ form(ingredientSelectForm, {'action': path('app_me_recipe_ingredient_add', {id: recipe.id})}) }}
+    <ul>
+        {% for utensil in recipe.utensils %}
+        <li>
+            <div>
+                <h2>{{ utensil.name}}</h2>
+                {{ form(utensilDeleteForms[utensil.id], {'action': path('app_me_recipe_utensil_delete', {id: recipe.id}), 'method': 'POST'}) }}
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    {{ form(utensilCreationForm, {'action': path('app_me_recipe_utensil_create', {id: recipe.id})}) }}
+    {{ form(utensilSelectForm, {'action': path('app_me_recipe_utensil_add', {id: recipe.id})}) }}
+    <ul>
+        {% for step in recipe.steps %}
+        <li>
+            <div>
+                <h2>{{ step.name}}</h2>
+                {{ form(stepDeleteForms[step.id], {'action': path('app_me_recipe_step_delete', {id: recipe.id}), 'method': 'POST'}) }}
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    {{ form(stepCreationForm, {'action': path('app_me_recipe_step_create', {id: recipe.id})}) }}
+    <a href={{ path('app_me_recipe')}}>Recipe List</a>
+{% endblock %}
