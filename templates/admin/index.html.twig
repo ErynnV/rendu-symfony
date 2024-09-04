@@ -9,12 +9,10 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/home/erynn/symfony/rendu-symfony/src/Controller/Admin/AdminpageController.php</code></li>
-        <li>Your template at <code>/home/erynn/symfony/rendu-symfony/templates/admin/index.html.twig</code></li>
-    </ul>
+    <h1>Hello Admin !</h1>
+    <a href={{ path('app_admin_category') }}>List of Category</a>
+    <a href={{ path('app_admin_category_create') }}>Make New Category</a>
+    <a href={{path('app_me_recipe_create')}}>New Recipe</a>
+    <a href={{path('app_me_recipe')}}>Recipe List</a>
 </div>
 {% endblock %}

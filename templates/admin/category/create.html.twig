@@ -1,8 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CategoryController!{% endblock %}
+{% block title %}Category Create{% endblock %}
 
 {% block body %}
+    <h2>Create your Category here.</h2>
     {{ form(form) }}
     <a href={{ path('app_admin_category')}}>Category List</a>
+    <a href={{ path('app_me_recipe_create')}}>Create a new recipe with it ?</a>
 {% endblock %}

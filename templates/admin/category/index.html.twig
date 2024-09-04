@@ -5,6 +5,7 @@
 {% block body %}
     <h1> Category List</h1>
     <a href={{path('app_admin_category_create')}}>New Category</a>
+    <a href={{path('app_admin')}}>Back to Admin page</a>
     <div>
     <ul>
         {% for category in categories %}

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MeController!{% endblock %}
+{% block title %}Hello There !{% endblock %}
 
 {% block body %}
 <style>
@@ -9,12 +9,13 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>Hello there !</h1>
+    <h2>Please mind that is a local service.</h2>
+    <p>Here you can create your own recipe modify them and consult them</p>
+    <a href={{ path('app_me_recipe')}}>Recipe List</a>
+    <a href={{path('app_me_recipe_create')}}>New Recipe</a>
+    <p>If you wonder why you cant create category, its because only admin account can do that here.</p>
+    <a href={{path('app_admin_category_create')}}>New Category</a>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/var/www/recipes/src/Controller/MeController.php</code></li>
-        <li>Your template at <code>/var/www/recipes/templates/me/index.html.twig</code></li>
-    </ul>
 </div>
 {% endblock %}

@@ -9,12 +9,14 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>Hello Dear User ! </h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/var/www/recipes/src/Controller/HomepageController.php</code></li>
-        <li>Your template at <code>/var/www/recipes/templates/homepage/index.html.twig</code></li>
-    </ul>
+    <h2> You'll need an account to go further !</h2>
+    <p>Do not worry its just an user name and a password</p>
+    <a href={{ path('app_register')}}>Here to Register</a>
+    <p>And if you already have an account go here !</p>
+    <a href={{ path('app_login')}}>Here to Login</a>
+    <p>Finally lets beggin !</p>
+    <a href={{ path('app_me')}}>Let me in!</a>
 </div>
 {% endblock %}

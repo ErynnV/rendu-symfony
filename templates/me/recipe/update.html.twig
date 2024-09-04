@@ -4,40 +4,46 @@
 
 {% block body %}
     {{ form(form) }}
+    <h3> Ingredients Here </h3>
+    <p> Select existing Ingredient or create new one. </p>
+    {{ form(ingredientSelectForm, {'action': path('app_me_recipe_ingredient_add', {id: recipe.id})}) }}
+    {{ form(ingredientCreationForm, {'action': path('app_me_recipe_ingredient_create', {id: recipe.id})}) }}
     <ul>
         {% for ingredient in recipe.ingredients %}
         <li>
             <div>
-                <h2>{{ ingredient.name}}</h2>
+                <p>{{ ingredient.name }}</p>
                 {{ form(ingredientDeleteForms[ingredient.id], {'action': path('app_me_recipe_ingredient_delete', {id: recipe.id}), 'method': 'POST'}) }}
             </div>
         </li>
         {% endfor %}
     </ul>
-    {{ form(ingredientCreationForm, {'action': path('app_me_recipe_ingredient_create', {id: recipe.id})}) }}
-    {{ form(ingredientSelectForm, {'action': path('app_me_recipe_ingredient_add', {id: recipe.id})}) }}
+    <h3> Utensil Here </h3>
+    <p> Select existing Utensil or create new one. </p>
+    {{ form(utensilSelectForm, {'action': path('app_me_recipe_utensil_add', {id: recipe.id})}) }}
+    {{ form(utensilCreationForm, {'action': path('app_me_recipe_utensil_create', {id: recipe.id})}) }}
     <ul>
         {% for utensil in recipe.utensils %}
         <li>
             <div>
-                <h2>{{ utensil.name}}</h2>
+                <p>{{ utensil.name }}</p>
                 {{ form(utensilDeleteForms[utensil.id], {'action': path('app_me_recipe_utensil_delete', {id: recipe.id}), 'method': 'POST'}) }}
             </div>
         </li>
         {% endfor %}
     </ul>
-    {{ form(utensilCreationForm, {'action': path('app_me_recipe_utensil_create', {id: recipe.id})}) }}
-    {{ form(utensilSelectForm, {'action': path('app_me_recipe_utensil_add', {id: recipe.id})}) }}
-    <ul>
+    <h3> Step Here</h3>
+    <p> Add step to recipe </p>
+    {{ form(stepCreationForm, {'action': path('app_me_recipe_step_create', {id: recipe.id})}) }}
+    <ol>
         {% for step in recipe.steps %}
         <li>
             <div>
-                <h2>{{ step.name}}</h2>
+                <p>{{ step.name }}</p>
                 {{ form(stepDeleteForms[step.id], {'action': path('app_me_recipe_step_delete', {id: recipe.id}), 'method': 'POST'}) }}
             </div>
         </li>
         {% endfor %}
-    </ul>
-    {{ form(stepCreationForm, {'action': path('app_me_recipe_step_create', {id: recipe.id})}) }}
+    </ol>
     <a href={{ path('app_me_recipe')}}>Recipe List</a>
 {% endblock %}
