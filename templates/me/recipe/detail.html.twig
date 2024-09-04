@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Detail !{% endblock %}
+
+{% block body %}
+    <h1>{{ recipe.title }} Details</h1>
+    <h2>Category : {{ recipe.category.name }}</h2>
+        <h3> Ingredient list :</h3>
+            <ul style="list-style-type: none;">
+            {% for ingredient in recipe.ingredients %}
+                <li>
+                    <div>
+                        <p>{{ ingredient.name}}</p>
+                    </div>
+                </li>
+            {% endfor %}
+            </ul>
+        <h3> Utensil list :</h3>
+            <ul style="list-style-type: none;">
+            {% for utensil in recipe.utensils %}
+            <li>
+                <div>
+                    <p>{{ utensil.name}}</p>
+                </div>
+            </li>
+            {% endfor %}
+            </ul>
+        <h3> Step list :</h3>
+        <ol>
+            {% for step in recipe.steps %}
+            <li>
+                <div>
+                    <p>{{ step.name}}</p>
+                </div>
+            </li>
+            {% endfor %}
+        </ol>
+    <a href={{ path('app_me_recipe')}}>Recipe List</a>
+{% endblock %}
