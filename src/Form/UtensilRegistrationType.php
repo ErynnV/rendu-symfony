@@ -13,7 +13,9 @@ class UtensilRegistrationType extends AbstractType
     {
         $builder
             ->add('name', TextType::class)
-            ->add('save', SubmitType::class)
+            ->add('save', SubmitType::class, [
+                'label' => 'New'
+            ])
         ;
     }
 }

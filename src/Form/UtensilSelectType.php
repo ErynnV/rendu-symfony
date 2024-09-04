@@ -17,7 +17,9 @@ class UtensilSelectType extends AbstractType
                 'class' => Utensil::class,
                 'choice_label' => 'name',
             ])
-            ->add('save', SubmitType::class)
+            ->add('save', SubmitType::class, [
+                'label' => 'Select'
+            ])
         ;
     }
 }
