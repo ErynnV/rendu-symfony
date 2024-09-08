@@ -128,6 +128,15 @@ class Recipe
 
         return $this;
     }
+    public function addIngredients(array $ingredients): static
+    {
+        foreach ($ingredients as $ingredient) {
+            $this->addIngredient($ingredient);
+        }
+
+        return $this;
+    }
+
     public function delIngredient(Ingredient $ingredient): static
     {
         if ($this->ingredients->contains($ingredient)) {
@@ -142,6 +151,14 @@ class Recipe
         if (!$this->utensils->contains($utensil)) {
             $this->utensils[] = $utensil;
             $utensil->addRecipe($this);
+        }
+
+        return $this;
+    }
+    public function addUtensils(array $utensils): static
+    {
+        foreach ($utensils as $utensil) {
+            $this->addUtensil($utensil);
         }
 
         return $this;
