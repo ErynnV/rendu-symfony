@@ -68,10 +68,10 @@ class AppFixtures extends Fixture
 
     //False data
 
-    private const NB_RECIPES = 1000;
-    private const NB_INGREDIENTS = 500;
-    private const NB_UTENSILS = 100;
-    private const NB_CATEGORIES = 50;
+    private const NB_RECIPES = 20;
+    private const NB_INGREDIENTS = 50;
+    private const NB_UTENSILS = 20;
+    private const NB_CATEGORIES = 5;
 
     private array $categories;
     private array $ingredients;
