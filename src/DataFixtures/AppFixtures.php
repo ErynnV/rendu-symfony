@@ -10,6 +10,7 @@ use App\Entity\Utensil;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
+use Symfony\Component\HttpFoundation\File\File;
 
 class AppFixtures extends Fixture
 {
@@ -76,7 +77,9 @@ class AppFixtures extends Fixture
     private array $ingredients;
     private array $utensils;
     private $faker;
-    public function __construct() {
+    public function __construct(
+        private string $projectDir
+    ) {
         $this->faker = Factory::create('en_EN');
         $this->categories = [];
         $this->ingredients = [];
@@ -143,10 +146,13 @@ class AppFixtures extends Fixture
     }
     private function addRecipe(ObjectManager $manager): void
     {
+        $filepath = $this->faker->image(null, 640, 480);
+        $file = new File($filepath);
         $recipe = new Recipe();
         $recipe
             ->setTitle($this->faker->words(1, 3))
             ->setCategory($this->faker->randomElement($this->categories))
+            ->setPreview($file, $this->projectDir)
             ->setCreatedAt(new \DateTimeImmutable('now', new \DateTimeZone('Europe/Paris') ))
 
             ->addIngredients(
