@@ -1,4 +1,4 @@
-# My symfonny project.
+# My symfony project.
 
 This is a personnal project for managing recipe. 
 You can create a category if you're loged as Admin
