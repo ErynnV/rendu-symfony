@@ -189,4 +189,29 @@ class Recipe
 
         return $this;
     }
+
+    #[ORM\Column(type: 'string')]
+    private string $previewFilename;
+
+    public function getPreviewFilename(): string
+    {
+        return $this->previewFilename;
+    }
+
+    public function setPreviewFilename(string $previewFilename): self
+    {
+        $this->previewFilename = $previewFilename;
+
+        return $this;
+    }
+
+    public function setPreview($previewfile): self
+    {
+        $extension = $previewfile->guessExtension();
+        $newFilename = rand(1, 99999).'.'.$extension;
+        $previewfile->move('recipes/preview/', $newFilename);
+        $this->setPreviewFilename('recipes/preview/' . $newFilename);
+
+        return $this;
+    }
 }

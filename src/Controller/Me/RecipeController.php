@@ -56,7 +56,7 @@ class RecipeController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $recipe = $form->getData();
-
+            $recipe->setPreview($form['preview']->getData());
             $recipe->setUser($this->getUser());
             $recipe->setCreatedAt(new \DateTimeImmutable());
 
@@ -101,6 +101,7 @@ class RecipeController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $recipe = $form->getData();
+            $recipe->setPreview($form['preview']->getData());
 
             $entityManager->persist($recipe);
             $entityManager->flush();

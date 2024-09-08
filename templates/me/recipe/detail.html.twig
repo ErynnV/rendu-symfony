@@ -5,6 +5,7 @@
 {% block body %}
     <h1>{{ recipe.title }} Details</h1>
     <h2>Category : {{ recipe.category.name }}</h2>
+    <img src="/{{recipe.previewFilename}}">
         <h3> Ingredient list :</h3>
             <ul style="list-style-type: none;">
             {% for ingredient in recipe.ingredients %}
@@ -35,5 +36,5 @@
             </li>
             {% endfor %}
         </ol>
-    <a href={{ path('app_me_recipe')}}>Recipe List</a>
+    <a href="{{ path('app_me_recipe')}}">Recipe List</a>
 {% endblock %}
