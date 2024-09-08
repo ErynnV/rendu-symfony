@@ -205,11 +205,11 @@ class Recipe
         return $this;
     }
 
-    public function setPreview($previewfile): self
+    public function setPreview($previewfile, $rootDir): self
     {
         $extension = $previewfile->guessExtension();
         $newFilename = rand(1, 99999).'.'.$extension;
-        $previewfile->move('recipes/preview/', $newFilename);
+        $previewfile->move($rootDir . '/public/recipes/preview/', $newFilename);
         $this->setPreviewFilename('recipes/preview/' . $newFilename);
 
         return $this;

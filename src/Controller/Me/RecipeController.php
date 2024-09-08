@@ -47,7 +47,7 @@ class RecipeController extends AbstractController
     }
 
     #[Route('/me/recipe/create', name: 'app_me_recipe_create' , methods:['GET', 'POST'])]
-    public function create(Request $request, EntityManagerInterface $entityManager): Response
+    public function create(Request $request, EntityManagerInterface $entityManager, string $projectDir): Response
     {
         $recipe = new Recipe();
         $form = $this->createForm(RecipeRegistrationType::class, $recipe);
@@ -56,7 +56,7 @@ class RecipeController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $recipe = $form->getData();
-            $recipe->setPreview($form['preview']->getData());
+            $recipe->setPreview($form['preview']->getData(), $projectDir);
             $recipe->setUser($this->getUser());
             $recipe->setCreatedAt(new \DateTimeImmutable());
 
@@ -78,7 +78,7 @@ class RecipeController extends AbstractController
     }
 
     #[Route('/me/recipe/update/{id}', name: 'app_me_recipe_update' , methods:['POST', 'GET'])]
-    public function update(Recipe $recipe, Request $request, EntityManagerInterface $entityManager): Response
+    public function update(Recipe $recipe, Request $request, EntityManagerInterface $entityManager, string $projectDir): Response
     {
         $form = $this->createForm(RecipeRegistrationType::class, $recipe);
 
@@ -101,7 +101,7 @@ class RecipeController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $recipe = $form->getData();
-            $recipe->setPreview($form['preview']->getData());
+            $recipe->setPreview($form['preview']->getData(), $projectDir);
 
             $entityManager->persist($recipe);
             $entityManager->flush();
