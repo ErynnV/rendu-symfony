@@ -110,6 +110,9 @@ class AppFixtures extends Fixture
                 $flush = 0;
             }
         }
+
+        $manager->flush();
+
     }
 
     private function addCategory(ObjectManager $manager): void 
