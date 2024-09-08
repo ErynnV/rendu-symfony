@@ -1,4 +1,4 @@
-# My symfony project.
+# My symfon y project.
 
 This is a personnal project for managing recipe. 
 You can create a category if you're loged as Admin
@@ -18,7 +18,7 @@ Make sure to load fixtures with :
 php bin/console doctrine:fixtures:load
 ```
 
-If you have toruble make sure you've done `composer-install`. 
+If you have trouble make sure you've done `composer-install`.
 
 
 
