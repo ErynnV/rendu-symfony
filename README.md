@@ -20,5 +20,6 @@ php bin/console doctrine:fixtures:load
 
 If you have trouble make sure you've done `composer-install`.
 
+If i want to push the project further i can do pagination on recipes but i didn't.
 
 
